@@ -59,3 +59,9 @@ then
     size=$(du -h /tmp/${name}-httpd-logs-${ts}.tar | awk '{print $1}')
     echo -e "<br>httpd-logs&nbsp;&nbsp;&nbsp;&nbsp;${ts}&nbsp;&nbsp;&nbsp;&nbsp;tar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${size}" >> ${docroot}/inventory.html
 fi
+
+#Creating cron job which runs at 12:00 am IST daily
+if [[ ! -f /etc/crom.d/automation ]];
+then
+    echo '30 18 * * * root /root/Automation_Project/automation.sh' >> /etc/cron.d/automation
+fi
